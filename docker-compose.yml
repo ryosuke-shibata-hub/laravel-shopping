@@ -3,14 +3,14 @@ services:
   app:
     build: ./infra/php
     volumes:
-      - ./backend:/work
+      - ./app:/work
 
   web:
     image: nginx:1.20-alpine
     ports:
       - 9090:90
     volumes:
-      - ./backend:/work
+      - ./app:/work
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
     working_dir: /work
 
@@ -19,6 +19,8 @@ services:
     build: ./infra/mysql
     volumes:
       - db-store:/var/lib/mysql
+    ports:
+      - "4306:3306"
 
 volumes:
   db-store: null
