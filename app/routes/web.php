@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::controller('/', [PagesController::class, 'index'])
+->name('home');
+Route::controller('/shop', [ProductController::class, 'index'])
+->name('shop');
+Route::controller('/shop/{id}', [ProductController::class, 'show'])
+->name('product');
+
+
+Route::controller('/cart', [CartController::class, 'cart'])
+->name('cart');
