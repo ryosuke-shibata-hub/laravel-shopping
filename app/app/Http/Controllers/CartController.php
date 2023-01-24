@@ -36,4 +36,19 @@ class CartController extends Controller
         session()->put('cartItems', $cartItems);
         return redirect()->back()->with('success','Product Add Cart');
     }
+
+    public function delete(Request $request)
+    {
+        if ($request->id) {
+            //sessionからアイテムIDを取得
+            $cartItems = session()->get('cartItems');
+            //セッションがセットされていたらdeleteから来たidをsessonから破棄する
+            if (isset($cartItems[$request->id])) {
+                unset($cartItems[$request->id]);
+                session()->put('cartItems', $cartItems);
+            }
+
+            return redirect()->back()->with('success','Product deleted seccessfully');
+        }
+    }
 }

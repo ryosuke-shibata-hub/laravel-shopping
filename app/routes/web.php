@@ -22,6 +22,7 @@ Route::get('/shop', [ProductController::class, 'index'])->name('index');
 Route::get('/shop/{id}', [ProductController::class, 'show'])->name('show');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/add-to-cart/{id}',[CartController::class, 'addToCart'])->name('addToCart');
+Route::get('/delete-from-cart/{id}',[CartController::class, 'delete'])->name('deleteFromCart');
 
 // Route::get('/', function () {
 //     return view('welcome');

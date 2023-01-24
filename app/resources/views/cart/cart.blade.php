@@ -1,54 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="mx-auto w-4/5">
-    <h1 class="text-5xl text-gray-800 font-bold pt-12 mb-8">
+<div class="w-4/5 mx-auto">
+    <h1 class="pt-12 mb-8 text-5xl font-bold text-gray-800">
         Shopping Cart
     </h1>
 
-    <hr class="border-1 border-gray-300">
+    <hr class="border-gray-300 border-1">
 </div>
 
-<div class="flex flex-col mx-auto w-4/5">
+<div class="flex flex-col w-4/5 mx-auto">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                     <tr>
                         <th
                             scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Name
                         </th>
 
                         <th
                             scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Details
                         </th>
 
                         <th
                             scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Price
                         </th>
 
                         <th
                             scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Quantity
                         </th>
 
                         <th
                             scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                             Total
                         </th>
 
                         <th
                             scope="col"
-                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-500 uppercase">
                             Delete
                         </th>
                     </tr>
@@ -59,9 +59,9 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <div class="flex-shrink-0 h-10 w-10">
+                                        <div class="flex-shrink-0 w-10 h-10">
                                             <img
-                                                class="h-10 w-10 rounded-full"
+                                                class="w-10 h-10 rounded-full"
                                                 src="{{ asset($value['image_path']) }}"
                                                 alt="{{ asset($value['name']) }}">
                                         </div>
@@ -86,12 +86,12 @@
 
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
                                         $ {{ $value['price'] }}
                                     </span>
                                 </td>
 
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                     <select name="quantity" id="quantity" value="{{ $value['quantity'] }}">
                                         @for ($i = 1; $i <= 10; $i++)
                                             <option value="{{ $i }}">
@@ -107,15 +107,15 @@
                                 </div>
                                 </td>
 
-                                <td class="px-6 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" role="button" class="text-red-600 hover:text-red-900">Delete</a>
+                                <td class="px-6 text-sm font-medium text-right whitespace-nowrap">
+                                    <a href="{{ route('deleteFromCart', $key) }}" role="button" class="text-red-600 hover:text-red-900">Delete</a>
                                 </td>
                             </tr>
                         </tbody>
                     @endforeach
                     @else
                     <td align="left" colspan="3">
-                        <p class="font-bold text-xl text-black py-6 px-4">
+                        <p class="px-4 py-6 text-xl font-bold text-black">
                             Shopping Cart is Empty.
                         </p>
                     </td>
